@@ -1,0 +1,37 @@
+[
+    {
+        "family":"MaterialIcons",
+        "fonts":[
+            {"asset":"fonts/MaterialIcons-Regular.ttf"}
+        ]
+    },
+    {
+        "family": "Roboto",
+        "fonts": [
+            {
+                "asset": "fonts/Roboto/Roboto-Bold.ttf",
+                "weight": 900
+            },
+            {"asset": "fonts/Roboto/Roboto-Regular.ttf"}
+        ]
+    },
+    {
+        "family": "Noto Sans",
+        "fonts": [
+            {
+                "asset": "fonts/Noto_Sans/NotoSans-Bold.ttf",
+                "weight": 900
+            },
+            {
+                "asset": "fonts/Noto_Sans/NotoSans-BoldItalic.ttf",
+                "style": "italic",
+                "weight": 900
+            },
+            {
+                "asset": "fonts/Noto_Sans/NotoSans-Italic.ttf",
+                "style": "italic"
+            },
+            {"asset": "fonts/Noto_Sans/NotoSans-Regular.ttf"}
+        ]
+    }
+]

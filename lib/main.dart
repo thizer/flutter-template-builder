@@ -1,5 +1,7 @@
 import 'dart:html';
 import 'package:flutter/material.dart';
+import 'package:flutterweb/views/widget-settings.dart';
+import 'package:flutterweb/views/widgets-list.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,48 +16,105 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
+    const String title = 'Flutter App Builder';
+
     window.onResize.listen((Event e) {
       setState(() {
         
       });
     });
 
-    return Row(
-      textDirection: TextDirection.ltr,
-      children: <Widget>[
-        Container(
-          width: window.innerWidth.toDouble()/2,
-          height: window.screen.available.height,
-          color: Colors.black26,
-          child: Center(child: Container(
-            width: 300,
-            height: 533,
-            color: Colors.white,
-            child: this._appContent(),
-          ))
-        ),
-        Expanded(child: Container(
-          color: Colors.black87,
-          child: Center(
-            child: Text(
-              'eitanois',
-              textDirection: TextDirection.ltr,
-            ),
-          )
-        ))
-      ],
-    );
-  }
-
-  MaterialApp _appContent() {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: title,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Container(
+              height: 60,
+              color: Color(0xff111111),
+              child: Flex(
+                direction: Axis.horizontal,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 15, right: 5),
+                    child: Icon(Icons.menu, color: Colors.white)
+                  ),
+                  Text(title, style: TextStyle(color: Colors.white))
+                ],
+              ),
+            ),
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Row(children: <Widget>[
+                    Container(
+                      width: 80,
+                      color: Color(0xff333333),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(height: 20),
+                          Container(
+                            width: 60,
+                            height: 85,
+                            color: Colors.blue,
+                          ),
+                          SizedBox(height: 20),
+                          Container(
+                            width: 60,
+                            height: 85,
+                            color: Colors.blue,
+                          ),
+                          SizedBox(height: 20),
+                          Container(
+                            width: 60,
+                            height: 85,
+                            color: Colors.blue,
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: (window.innerWidth.toDouble()/2) - 80,
+                      height: window.screen.available.height,
+                      color: Colors.black26,
+                      child: Center(child: Container(
+                        width: 300,
+                        height: 533,
+                        color: Colors.white,
+                        child: this._appContent(title),
+                      ))
+                    )
+                  ]),
+                  Expanded(
+                    child: Row(children: <Widget>[
+                      Container(
+                        color: Colors.white,
+                        width: 300,
+                        child: WidgetsList(),
+                      ),
+                      Expanded(
+                        child: Container(
+                          color: Colors.black12,
+                          child: WidgetsSettings()
+                        )
+                      )
+                    ]),
+                  )
+                ],
+              )
+            )
+          ],
+        ),
+      )
     );
+  }
+
+  MyHomePage _appContent(String title) {
+    return MyHomePage(title: title);
   }
 }
 
