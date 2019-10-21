@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutterweb/views/widget-settings.dart';
 import 'package:flutterweb/views/widgets-list.dart';
 
@@ -77,17 +78,7 @@ class _MyAppState extends State<MyApp> {
                         ],
                       ),
                     ),
-                    Container(
-                      width: (window.innerWidth.toDouble()/2) - 80,
-                      height: window.screen.available.height,
-                      color: Colors.black26,
-                      child: Center(child: Container(
-                        width: 300,
-                        height: 533,
-                        color: Colors.white,
-                        child: this._appContent(title),
-                      ))
-                    )
+                    this._appContent(title)
                   ]),
                   Expanded(
                     child: Row(children: <Widget>[
@@ -113,8 +104,39 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  MyHomePage _appContent(String title) {
-    return MyHomePage(title: title);
+  Container _appContent(String title) {
+    return Container(
+      width: (window.innerWidth.toDouble()/2) - 80,
+      height: window.screen.available.height,
+      color: Colors.black26,
+      child: Center(child: Container(
+        width: 300,
+        height: 533,
+        color: Colors.white,
+        child: MyHomePage(title: title),
+      ))
+    );
+  }
+
+  void takeScreenShot() async {
+    try {
+      // RenderRepaintBoundary boundary = _MyHomePageState.previewContainer.currentContext.findRenderObject();
+      // ui.Image image = await boundary.toImage();
+      // final directory = (await getApplicationDocumentsDirectory()).path;
+      // ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      // Uint8List pngBytes = byteData.buffer.asUint8List();
+
+      // print(directory);
+      // print(pngBytes);
+
+      // File imgFile = File(pngBytes, "$directory/screenshot.png");
+
+      // I.decodeImage(pngBytes);
+
+      // File imgFile = new File("$directory/screenshot.png").writeAsBytes(pngBytes);
+    } catch (e) {
+      print(e);
+    }
   }
 }
 
