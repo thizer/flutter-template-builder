@@ -28,6 +28,33 @@ class _WidgetsListState extends State<WidgetsList> {
   @override
   Widget build(BuildContext context) {
     List<Widget> widgetsList = List<Widget>();
+
+    widgetsList.add(
+      Padding(
+        padding: EdgeInsets.all(5),
+        child: DragTarget(
+          onAccept: (String data) {
+            print(['onAccept', data]);
+          },
+          onLeave: (String data) {
+            print(['onLeave', data]);
+          },
+          onWillAccept: (String data) {
+            print(['onWillAccept', data]);
+            return true;
+          },
+          builder: (BuildContext context, list1, list2) {
+            return Container(
+              color: Colors.red[700],
+              width: 300,
+              height: 100,
+              child: Text('Arraste para ca'),
+            );
+          },
+        ),
+      ),
+    );
+
     widgetsList.add(Padding(
       padding: EdgeInsets.only(top: 20, left: 10),
       child: Container(
@@ -102,7 +129,7 @@ class _WidgetsListState extends State<WidgetsList> {
         child: GestureDetector(
           onTap: () => print(i),
           child: Draggable(
-            data: [i],
+            data: i,
             child: container,
             feedback: container,
           ),
